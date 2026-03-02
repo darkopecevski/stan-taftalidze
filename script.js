@@ -5,31 +5,26 @@ document.addEventListener("DOMContentLoaded", () => {
     const slides = document.querySelectorAll('.slide');
     const prevBtn = document.querySelector('.prev-btn');
     const nextBtn = document.querySelector('.next-btn');
-    const indicatorsContainer = document.querySelector('.indicators');
-    
+    const slideCounter = document.querySelector('.slide-counter');
+
     let currentSlide = 0;
     const totalSlides = slides.length;
 
-    // Create Indicators
-    slides.forEach((_, index) => {
-        const dot = document.createElement('div');
-        dot.classList.add('dot');
-        if (index === 0) dot.classList.add('active');
-        dot.addEventListener('click', () => goToSlide(index));
-        indicatorsContainer.appendChild(dot);
-    });
-
-    const dots = document.querySelectorAll('.dot');
-
     function updateSlides() {
-        // Remove active class from all slides and dots
+        // Remove active class from all slides
         slides.forEach(slide => slide.classList.remove('active'));
-        dots.forEach(dot => dot.classList.remove('active'));
 
-        // Add active class to current slide and dot
+        // Add active class to current slide
         slides[currentSlide].classList.add('active');
-        dots[currentSlide].classList.add('active');
+
+        // Update counter
+        if (slideCounter) {
+            slideCounter.textContent = `${currentSlide + 1} / ${totalSlides}`;
+        }
     }
+
+    // Initialize counter
+    updateSlides();
 
     function nextSlide() {
         currentSlide = (currentSlide + 1) % totalSlides;
@@ -38,11 +33,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function prevSlide() {
         currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-        updateSlides();
-    }
-
-    function goToSlide(index) {
-        currentSlide = index;
         updateSlides();
     }
 

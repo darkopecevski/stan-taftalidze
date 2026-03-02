@@ -316,30 +316,14 @@ html {
     transform: scale(0.95);
 }
 
-.indicators {
-    display: flex;
-    gap: 10px;
-    max-width: 250px;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.dot {
-    width: 6px;
-    height: 6px;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 50%;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.dot:hover {
-    background: rgba(255, 255, 255, 0.5);
-}
-
-.dot.active {
-    background: var(--accent);
-    transform: scale(1.5);
+.slide-counter {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: 2px;
+    min-width: 80px;
+    text-align: center;
+    font-variant-numeric: tabular-nums;
 }
 
 /* Responsive Design */
